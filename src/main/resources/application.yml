@@ -1,0 +1,45 @@
+server:
+  # 端口号
+  port: 8002
+spring:
+  resources:
+    # 不要为我们工程中的资源文件建立映射
+    add-mappings: false
+  mvc:
+    # 出现错误时, 直接抛出异常(便于异常统一处理，否则捕获不到404)
+    # throw-exception-if-no-handler-found: true  add-mappings: false  统一处理404的异常
+    throw-exception-if-no-handler-found: true
+    # 静态资源访问，便以引用css,js等文件
+    static-path-pattern: /**
+  # mysql 数据库
+  datasource:
+    url: jdbc:mysql://rm-wz9qd17wud65bg4rulo.mysql.rds.aliyuncs.com:3306/zzf_medical?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2B8
+    username: lank
+    password: Lank_root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: 148.70.22.234
+    port: 6379
+    password: zouzhifeng
+  rabbitmq:
+    addresses: 148.70.22.234
+    port: 5672
+    username: guest
+    password: guest
+  # thymeleaf 模板引擎
+  thymeleaf:
+    prefix: classpath:/templates/
+    check-template-location: true
+    suffix: .html
+    encoding: UTF-8
+    mode: LEGACYHTML5
+    cache: false
+mybatis:
+  mapper-locations: classpath:/mappers/*.xml
+  configuration:
+    # mybatis 开启拖峰命名模式
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+# elasticSearch
+elasticSearch:
+  ip: 148.70.22.234:9300 
